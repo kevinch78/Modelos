@@ -1,13 +1,21 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import joblib
 import pandas as pd
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='front')
 
 # Cargar modelos y columnas
 lr_model = joblib.load('lr_model2.pkl')
 svm_model = joblib.load('svm_model2.pkl')
 columns = joblib.load('model_columns2.pkl')
+
+@app.route('/')
+def index():
+    return send_from_directory('front', 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory('front', path)
 
 @app.route('/predict', methods=['POST'])
 def predict():
