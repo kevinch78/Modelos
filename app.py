@@ -5,9 +5,9 @@ import pandas as pd
 app = Flask(__name__, static_folder='front')
 
 # Cargar modelos y columnas
-lr_model = joblib.load('lr_model2.pkl')
-svm_model = joblib.load('svm_model2.pkl')
-columns = joblib.load('model_columns2.pkl')
+lr_model = joblib.load('lr_model.pkl')
+svm_model = joblib.load('svm_model.pkl')
+columns = joblib.load('model_columns.pkl')
 
 @app.route('/')
 def index():
@@ -17,7 +17,7 @@ def index():
 def serve_static(path):
     return send_from_directory('front', path)
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict_price', methods=['POST'])
 def predict():
     try:
         data = request.get_json()

@@ -22,12 +22,12 @@
                 <label for="GrLivArea">
                     <i class="fas fa-ruler-combined"></i> Área Habitable (pies²)
                 </label>
-                <input type="number" id="GrLivArea" name="GrLivArea" required 
+                <input type="number" id="GrLivArea" name="GrLivArea" min="0" required 
                        placeholder="Ingrese el área habitable">
             </div>
             <div class="form-group">
                 <label for="GarageCars">
-                    <i class="fas fa-car"></i> Capacidad del Garaje (carros)
+                    <i class="fas fa-car"></i> Capacidad del Garaje (0-4)
                 </label>
                 <input type="number" id="GarageCars" name="GarageCars" min="0" max="4" required 
                        placeholder="Ingrese la capacidad del garaje">
@@ -36,22 +36,22 @@
                 <label for="TotalBsmtSF">
                     <i class="fas fa-building"></i> Área del Sótano (pies²)
                 </label>
-                <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" required 
+                <input type="number" id="TotalBsmtSF" name="TotalBsmtSF" min="0" required 
                        placeholder="Ingrese el área del sótano">
             </div>
             <button type="submit">
                 <i class="fas fa-calculator"></i> Predecir Precio
             </button>
         </form>
-        <div id="results" class="results">
+        <div class="results">
             <h2><i class="fas fa-chart-line"></i> Resultados</h2>
             <div class="prediction-box">
-                <h3><i class="fas fa-brain"></i> Predicción KNN</h3>
-                <p id="knnPrediction">-</p>
+                <h3><i class="fas fa-chart-line"></i> Regresión Lineal</h3>
+                <p id="linearPrediction">$0</p>
             </div>
             <div class="prediction-box">
-                <h3><i class="fas fa-tree"></i> Predicción Random Forest</h3>
-                <p id="rfPrediction">-</p>
+                <h3><i class="fas fa-project-diagram"></i> Support Vector Machine (SVM)</h3>
+                <p id="svmPrediction">$0</p>
             </div>
         </div>
     </div>
