@@ -4,37 +4,29 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Carga modelos y columnas
-model_knn = joblib.load('modelo_knn.pkl')
-model_rf = joblib.load('modelo_random_forest.pkl')
-columns = joblib.load('columns.pkl')  # ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF']
+# Cargar modelos y columnas
+lr_model = joblib.load('lr_model2.pkl')
+svm_model = joblib.load('svm_model2.pkl')
+columns = joblib.load('model_columns2.pkl')
 
 @app.route('/predict', methods=['POST'])
-
 def predict():
-    print("Columnas que espera el modelo:", columns)
-
     try:
         data = request.get_json()
-        print("📦 Datos recibidos:", data)  # <-- Aquí lo colocas
-
         df = pd.DataFrame([data])
-        df = df[columns]  # usa solo las columnas que espera el modelo
+        df = df[columns]  # Asegurar orden y columnas correctas
 
-        knn_pred = model_knn.predict(df)[0]
-        rf_pred = model_rf.predict(df)[0]
+        # Predecir
+        lr_pred = lr_model.predict(df)[0]
+        svm_pred = svm_model.predict(df)[0]
 
         return jsonify({
-            "knn_prediction": round(knn_pred, 2),
-            "random_forest_prediction": round(rf_pred, 2)
+            "regresion_lineal": round(lr_pred, 2),
+            "svm": round(svm_pred, 2)
         })
 
     except Exception as e:
-        print("❌ Error:", e)
         return jsonify({"error": str(e)}), 400
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
