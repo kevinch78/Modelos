@@ -23,80 +23,54 @@ body {
     background-position: center;
     background-attachment: fixed;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
     color: var(--text-color);
-    position: relative;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
-    z-index: -1;
 }
 
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
     background-color: rgba(44, 62, 80, 0.95);
-    padding: 2.5rem;
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    width: 100%;
-    max-width: 600px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    position: relative;
-    overflow: hidden;
-}
-
-.container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, rgba(52, 152, 219, 0.1) 0%, rgba(46, 204, 113, 0.1) 100%);
-    z-index: -1;
 }
 
 h1 {
-    color: var(--text-color);
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.2rem;
-    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    padding: 20px 0;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    position: relative;
 }
 
-h1::after {
-    content: '';
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: var(--accent-color);
-    margin: 10px auto;
-    border-radius: 2px;
+h1 i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+/* Estilos del formulario */
+#predictionForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .form-group {
-    margin-bottom: 1.8rem;
-    position: relative;
+    margin-bottom: 15px;
 }
 
 label {
     display: block;
-    margin-bottom: 0.8rem;
+    margin-bottom: 8px;
     color: var(--text-color);
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 0.95em;
 }
 
 label i {
@@ -104,152 +78,182 @@ label i {
     color: var(--accent-color);
 }
 
-input {
+input[type="number"] {
     width: 100%;
-    padding: 1rem;
+    padding: 12px;
     background-color: rgba(44, 62, 80, 0.8);
     border: 2px solid var(--input-border);
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 1em;
     color: var(--text-color);
     transition: all 0.3s ease;
 }
 
-input:focus {
-    outline: none;
+input[type="number"]:focus {
     border-color: var(--accent-color);
+    outline: none;
     box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
     background-color: rgba(44, 62, 80, 0.9);
 }
 
-input::placeholder {
+input[type="number"]::placeholder {
     color: rgba(236, 240, 241, 0.5);
 }
 
+/* Estilos del botón */
 button {
-    width: 100%;
-    padding: 1.2rem;
+    grid-column: 1 / -1;
     background: linear-gradient(135deg, var(--accent-color) 0%, #2980b9 100%);
     color: white;
+    padding: 15px 30px;
     border: none;
     border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.1em;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    position: relative;
-    overflow: hidden;
-}
-
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: 0.5s;
-}
-
-button:hover::before {
-    left: 100%;
 }
 
 button:hover {
+    background: linear-gradient(135deg, #2980b9 0%, var(--accent-color) 100%);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
-button:active {
-    transform: translateY(0);
+button i {
+    font-size: 1.2em;
 }
 
+/* Estilos de resultados */
 .results {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .results h2 {
-    color: var(--text-color);
-    margin-bottom: 1.5rem;
-    font-size: 1.6rem;
     text-align: center;
-    position: relative;
+    color: var(--text-color);
+    margin-bottom: 25px;
+    font-size: 1.8em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.results h2::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: var(--accent-color);
-    margin: 10px auto;
-    border-radius: 2px;
+.results h2 i {
+    color: var(--accent-color);
+    margin-right: 10px;
 }
 
 .prediction-box {
     background-color: rgba(52, 73, 94, 0.8);
-    padding: 1.5rem;
+    padding: 20px;
     border-radius: 10px;
-    margin-bottom: 1.2rem;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.prediction-box::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-    transform: translateX(-100%);
-    transition: 0.5s;
-}
-
-.prediction-box:hover::before {
-    transform: translateX(100%);
 }
 
 .prediction-box:hover {
-    transform: translateY(-3px);
+    transform: translateY(-5px);
+    background-color: rgba(52, 73, 94, 0.9);
 }
 
 .prediction-box h3 {
     color: var(--accent-color);
-    margin-bottom: 0.8rem;
-    font-size: 1.2rem;
-    font-weight: 600;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .prediction-box h3 i {
-    margin-right: 8px;
+    color: var(--accent-color);
 }
 
 .prediction-box p {
+    font-size: 1.8em;
     color: var(--success-color);
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 480px) {
+/* Responsive */
+@media (max-width: 768px) {
+    #predictionForm {
+        grid-template-columns: 1fr;
+    }
+    
     .container {
-        padding: 1.5rem;
+        padding: 15px;
     }
     
     h1 {
-        font-size: 1.8rem;
+        font-size: 2em;
     }
     
-    .prediction-box {
-        padding: 1.2rem;
+    .prediction-box p {
+        font-size: 1.5em;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-group, .prediction-box {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Estilos para mensajes de error */
+.error-message {
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 5px;
+    display: none;
+}
+
+input:invalid + .error-message {
+    display: block;
+}
+
+/* Estilos para el estado de carga */
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 10px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 } 

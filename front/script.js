@@ -2,7 +2,9 @@ document.getElementById('predictionForm').addEventListener('submit', async funct
     e.preventDefault();
 
     // Validar los campos antes de enviar
-    const fields = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF'];
+    const fields = ['OverallQual', 'GrLivArea', 'GarageCars', 'TotalBsmtSF',
+        'YearBuilt', 'FullBath', 'MasVnrArea', 'Fireplaces',
+        '1stFlrSF', 'TotRmsAbvGrd', 'GarageArea', 'BsmtFinSF1'];
     const formData = {};
     let hasError = false;
 
